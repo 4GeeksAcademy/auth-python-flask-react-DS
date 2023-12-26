@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../store/appContext.js";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
@@ -13,32 +13,40 @@ const LogIn = () => {
 
     const token = localStorage.getItem("token");
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
 
-        actions.login(email, password)
-            .then((res) => { navigate("/") })
+        try {
+            const response = await actions.login(email, password);
 
-        setTimeout(() => {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Datos erróneos o usuario inexiste!",
-                });
-                setEmail("")
-                setPassword("")
-            } else {
-                Swal.fire({
-                    icon: "success",
-                    title: "Has accedido correctamente!"
-                });
-                setTimeout(() => {
-                    window.location.reload(false)
-                }, 1500);
-            }
-        }, 2000);
+            Swal.fire({
+                icon: "success",
+                title: "Has accedido correctamente!"
+            });
+
+            const token = response.token;  // Obtener el token de la respuesta
+
+            setTimeout(() => {
+                navigate("/");
+            }, 1500);
+
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 1500);
+
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Datos erróneos o usuario inexistente!",
+            });
+
+            console.log("error catch login", error)
+
+            // Resetear campos
+            setEmail("");
+            setPassword("");
+        }
     };
 
     return (

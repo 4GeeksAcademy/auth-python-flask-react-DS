@@ -5,8 +5,9 @@ import Home from "./pages/home.jsx";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/Navbar.jsx";
 import Registro from "./pages/registro.jsx";
-import LogIn from "./pages/login.jsx";
+import LogIn from "./pages/logIn.jsx";
 import Private from "./pages/private.jsx";
+import PrivateRoute from "./component/PrivateRoute.jsx";
 
 //create your first component
 const Layout = () => {
@@ -24,7 +25,11 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Registro />} path="/registro" />
                         <Route element={<LogIn />} path="/acceso" />
-                        <Route element={<Private />} path="/private" />
+                        <Route element={
+                        <PrivateRoute>
+                            <Private />
+                        </PrivateRoute>
+                        } path="/private" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
             </BrowserRouter>

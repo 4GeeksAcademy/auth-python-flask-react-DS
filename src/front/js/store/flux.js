@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: async (email, password) => {
-				console.log(email, password);
+				console.log("información llegando a login", email, password)
 				const opts = {
 					method: "POST",
 					headers: {
@@ -49,18 +49,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"password": password,
 					}),
 				};
-				const res = await fetch("https://upgraded-halibut-g9pjqw9vxgq299gj-3001.app.github.dev/api/users", opts);
+				const res = await fetch("https://upgraded-halibut-g9pjqw9vxgq299gj-3001.app.github.dev/api/login", opts);
+
+				if (!res.ok) {
+					throw new Error(`Network response was not ok: ${res.status}`);
+				}
+
 				if (res.status < 200 || res.status >= 300) {
 					throw new Error("There was an error signing in");
 				}
+
 				const data = await res.json();
+				console.log("Data login", data)
 
 				localStorage.setItem("token", data.token);
-				localStorage.setItem("user_id", data.user_id);
 
 				console.log("USER INFO HERE", data)
 
-				return true;
+				return data;
 			},
 
 

@@ -4,11 +4,12 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import JWTManager, create_access_token
+from flask_cors import CORS
 
 api = Blueprint('api', __name__)
+CORS(api, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"]}})
 
 # Allow CORS requests to this API
 CORS(api)
@@ -45,4 +46,4 @@ def login():
         return jsonify({'message': 'Invalid email or password'}), 401
     
     token = create_access_token(identity={'email': user.email})
-    return jsonify({'token': token, 'user_id': user.id, 'message': 'Login successful'}), 200
+    return jsonify({'token': token, 'message': 'Login successful'}), 200
