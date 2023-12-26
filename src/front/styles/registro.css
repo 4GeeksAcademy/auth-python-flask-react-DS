@@ -1,0 +1,59 @@
+.container-registro {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.card-registro {
+    width: 30%;
+    margin: auto;
+    margin-top: 10px;
+    background: white;
+    text-align: center;
+    border-radius: 20px;
+    border: grey 1px solid;
+}
+
+.container-inputs-registro {
+    margin: 10px auto;
+}
+
+.input-registro {
+    width: 80%;
+    padding: 7px 10px;
+    margin: 15px auto;
+    background: whitesmoke;
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.input-registro:focus {
+    outline: grey 1px solid;
+}
+
+#terminosYcondiciones {
+    width: 18px;
+    height: 18px;
+}
+
+.container-terminos-y-condiciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.terminosYcondicionesLabel {
+    margin-left: 8px;
+}
+
+.container-btn-registro,
+.container-btn-registro-google {
+    width: 80%;
+    margin: 10px auto;
+}

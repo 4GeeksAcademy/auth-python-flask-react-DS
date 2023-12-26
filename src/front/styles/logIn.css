@@ -1,0 +1,51 @@
+.container-acceso {
+    border: grey 1px solid;
+    border-radius: 20px;
+    margin: 70px auto;
+}
+
+.input-field {
+    display: flex;
+    justify-content: center;
+    padding-right: 15px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.input-field-login {
+    border-radius: 5px;
+    border: rgb(177, 177, 177) 1px solid;
+    align-items: center;
+    cursor: pointer;
+    width: 90%;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 6px 5px;
+}
+
+.input-field-login:focus {
+    outline: grey 1px solid;
+}
+
+.boton-login {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 70%;
+}
+
+.crear-cuenta-login {
+    text-align: center;
+    color: grey;
+}
+
+.olvide-mi-contraseña {
+    text-align: center;
+    margin: 0px auto 10px;
+    display: flex;
+    border: none;
+    background: none;
+}
+
+.olvide-mi-contraseña:hover {
+    color: rgb(52, 52, 250);
+}
